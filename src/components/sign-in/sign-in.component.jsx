@@ -1,5 +1,5 @@
 import { useState} from 'react'
-import { SignInWithGooglePopup,createUserDocumentFromAuth,signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
+import { SignInWithGooglePopup,signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
 import Button,{BUTTON_TYPE_CLASSES} from '../button/button-component';
 import './sign-in.style.scss'
@@ -25,6 +25,7 @@ const defaultFormFields = {
       event.preventDefault();
   
       try {
+        // eslint-disable-next-line
         const response = await signInAuthUserWithEmailAndPassword(
           email,
           password
@@ -38,7 +39,7 @@ const defaultFormFields = {
             case 'auth/wrong-password':
             alert('incorrect password');
             break;
-
+  
             case 'auth/user-not-found':
             alert('no user with this email')
             break;
